@@ -7,9 +7,225 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/* ───────── Custom Animations ───────── */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 12px 4px rgba(245, 158, 11, 0.15);
+  }
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes typewriter {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+    filter: blur(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes toastSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.96);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.4s ease-out both;
+}
+
+.animate-pulseGlow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+.animate-countUp {
+  animation: countUp 0.5s ease-out both;
+}
+
+.animate-typewriter {
+  animation: typewriter 0.35s ease-out both;
+}
+
+.animate-toast {
+  animation: toastSlide 3.5s ease-in-out forwards;
+}
+
+/* ───────── Shimmer Skeleton ───────── */
+
+.shimmer-line {
+  background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 37%, #f3f4f6 63%);
+  background-size: 800px 100%;
+  animation: shimmer 1.6s ease-in-out infinite;
+  border-radius: 6px;
+}
+
+/* ───────── Custom Scrollbar ───────── */
+
+.scrollbar-styled::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-styled::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-styled::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 99px;
+}
+
+.scrollbar-styled::-webkit-scrollbar-thumb:hover {
+  background: #9ca3af;
+}
+
+/* ───────── Gradient Stress Slider ───────── */
+
+input[type="range"].stress-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 8px;
+  border-radius: 99px;
+  outline: none;
+  cursor: pointer;
+}
+
+input[type="range"].stress-slider::-webkit-slider-runnable-track {
+  height: 8px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #1D9E75, #f59e0b, #ef4444);
+}
+
+input[type="range"].stress-slider::-moz-range-track {
+  height: 8px;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #1D9E75, #f59e0b, #ef4444);
+}
+
+input[type="range"].stress-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #1D9E75;
+  margin-top: -6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input[type="range"].stress-slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #1D9E75;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
+
+input[type="range"].stress-slider:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(29, 158, 117, 0.25);
+}
+
+/* ───────── Focus Visible Outlines ───────── */
+
+*:focus-visible {
+  outline: 2px solid #1D9E75;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+button:focus-visible {
+  outline: 2px solid #1D9E75;
+  outline-offset: 2px;
+}
+
+/* ───────── Skip to Content Link ───────── */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #1D9E75;
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top 0.2s;
+  font-weight: bold;
+  border-bottom-right-radius: 8px;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: none;
+}
+
+/* ───────── Prefers Reduced Motion ───────── */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-delay: 0s !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+}
+
