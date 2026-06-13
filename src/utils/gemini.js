@@ -73,7 +73,11 @@ async function callGemini(body) {
 
       if (!response.ok) {
         const errData = await response.json().catch(() => ({}));
-        throw new Error(errData.error || `API error (${response.status}). Please try again.`);
+        let errMsg = typeof errData.error === 'string' ? errData.error : (errData.error?.message || `API error (${response.status}). Please try again.`);
+        if (response.status === 429) {
+          errMsg = 'Rate limit exceeded (429). The AI service is currently busy. Please wait a few seconds before trying again.';
+        }
+        throw new Error(errMsg);
       }
 
       const data = await response.json();

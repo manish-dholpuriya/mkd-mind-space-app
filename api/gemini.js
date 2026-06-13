@@ -69,8 +69,11 @@ export default async function handler(req, res) {
 
     if (!response.ok) {
       console.error('Gemini API error:', response.status, JSON.stringify(data));
+      const message = response.status === 429
+        ? 'Rate limit exceeded (429). The AI service is currently busy. Please wait a few seconds before trying again.'
+        : `AI service error (${response.status}). Please try again.`;
       return res.status(response.status).json({
-        error: `AI service error (${response.status}). Please try again.`,
+        error: message,
       });
     }
 
