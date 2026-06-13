@@ -27,7 +27,7 @@ export default function BreathingTimer({ isOpen, onClose }) {
       // Focus on the first element (close button)
       setTimeout(() => {
         const focusableElements = modalRef.current?.querySelectorAll(
-          'button, [href], input, select, textarea, [tabindex]:not([-1])'
+          'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
         );
         if (focusableElements && focusableElements.length > 0) {
           focusableElements[0].focus();
@@ -52,7 +52,7 @@ export default function BreathingTimer({ isOpen, onClose }) {
       if (e.key !== 'Tab') return;
 
       const focusableElements = modalRef.current?.querySelectorAll(
-        'button, [href], input, select, textarea, [tabindex]:not([-1])'
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
       );
       if (!focusableElements || focusableElements.length === 0) return;
 
