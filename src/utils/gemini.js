@@ -13,7 +13,7 @@ export async function analyzeEntry({ mood, moodLabel, stress, exams, journal }) 
     throw new Error('Gemini API key is missing or not configured.');
   }
 
-  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+  const endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
   
   const examsText = exams.length > 0 ? exams.join(', ') : 'competitive exams';
 
@@ -35,6 +35,7 @@ Keep it under 300 words. Be conversational and genuinely caring.`;
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'X-goog-api-key': apiKey,
       },
       body: JSON.stringify({
         contents: [
@@ -81,7 +82,7 @@ export async function chatWithAI(messages) {
     throw new Error('Gemini API key is missing or not configured.');
   }
 
-  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+  const endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
 
   // Map roles user/ai to user/model
   const contents = messages.map((m) => ({
@@ -100,6 +101,7 @@ export async function chatWithAI(messages) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'X-goog-api-key': apiKey,
       },
       body: JSON.stringify({ contents }),
     });
@@ -134,7 +136,7 @@ export async function getDailyQuote(examContext) {
     throw new Error('Gemini API key is missing or not configured.');
   }
 
-  const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`;
+  const endpoint = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
   const exam = examContext || 'a competitive exam';
 
   const prompt = `Generate one short, powerful motivational quote (max 20 words) specifically for an Indian student preparing for ${exam}. Make it feel personal and real, not generic. Return only the quote text, no author, no punctuation other than the quote itself.`;
@@ -144,6 +146,7 @@ export async function getDailyQuote(examContext) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'X-goog-api-key': apiKey,
       },
       body: JSON.stringify({
         contents: [
