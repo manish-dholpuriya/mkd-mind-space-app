@@ -200,7 +200,7 @@ export default function Chat() {
           onChange={(e) => setInput(e.target.value)}
           disabled={loading}
           placeholder="Type your message here..."
-          className="flex-1 px-4 py-3 border border-gray-200 rounded-xl focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/15 outline-none text-sm bg-white font-medium placeholder-gray-400 transition-all disabled:opacity-50 disabled:bg-gray-50"
+          className="flex-1 px-4 py-3 border border-gray-200 rounded-xl focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/15 outline-none text-base md:text-sm bg-white font-medium placeholder-gray-400 transition-all disabled:opacity-50 disabled:bg-gray-50"
           aria-label="Chat message input"
         />
         <button

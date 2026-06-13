@@ -227,7 +227,7 @@ export default function CheckIn({ onEntryAdded }) {
             onChange={(e) => setJournal(e.target.value)}
             aria-required="true"
             placeholder="Write freely... What happened today? What's worrying you? Any wins, however small?"
-            className={`w-full p-4 border border-gray-200 rounded-xl focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/15 outline-none min-h-[120px] transition-all resize-y text-sm text-gray-800 placeholder-gray-400 bg-white ${
+            className={`w-full p-4 border border-gray-200 rounded-xl focus:border-brand-teal focus:ring-2 focus:ring-brand-teal/15 outline-none min-h-[120px] transition-all resize-y text-base md:text-sm text-gray-800 placeholder-gray-400 bg-white ${
               loading ? 'opacity-60 bg-gray-50 cursor-not-allowed' : ''
             }`}
             aria-describedby="journal-char-count"
