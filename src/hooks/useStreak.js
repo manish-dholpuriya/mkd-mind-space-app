@@ -52,9 +52,16 @@ export const useStreak = () => {
   }, []);
 
   useEffect(() => {
-    calculateStreak();
+    let active = true;
+    const timer = setTimeout(() => {
+      if (active) {
+        calculateStreak();
+      }
+    }, 0);
     window.addEventListener('mindspace_storage_update', calculateStreak);
     return () => {
+      active = false;
+      clearTimeout(timer);
       window.removeEventListener('mindspace_storage_update', calculateStreak);
     };
   }, [calculateStreak]);

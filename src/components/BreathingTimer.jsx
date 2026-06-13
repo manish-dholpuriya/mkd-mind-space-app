@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { X, Play, Square } from 'lucide-react';
 
 export default function BreathingTimer({ isOpen, onClose }) {
@@ -11,6 +11,15 @@ export default function BreathingTimer({ isOpen, onClose }) {
   const elapsedRef = useRef(null);
   const modalRef = useRef(null);
   const previousFocusRef = useRef(null);
+
+  const handleClose = useCallback(() => {
+    setIsRunning(false);
+    setPhase('Inhale');
+    setSeconds(4);
+    setCycleCount(0);
+    setElapsedSeconds(0);
+    onClose();
+  }, [onClose]);
 
   useEffect(() => {
     if (isOpen) {
@@ -65,7 +74,7 @@ export default function BreathingTimer({ isOpen, onClose }) {
 
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen]);
+  }, [isOpen, handleClose]);
 
   useEffect(() => {
     if (!isRunning) {
@@ -83,8 +92,8 @@ export default function BreathingTimer({ isOpen, onClose }) {
     timerRef.current = setInterval(() => {
       setSeconds((prev) => {
         if (prev <= 1) {
-          let nextPhase = 'Inhale';
-          let nextSeconds = 4;
+          let nextPhase;
+          let nextSeconds;
           
           if (phase === 'Inhale') {
             nextPhase = 'Hold';
@@ -125,15 +134,6 @@ export default function BreathingTimer({ isOpen, onClose }) {
       setCycleCount(0);
       setElapsedSeconds(0);
     }
-  };
-
-  const handleClose = () => {
-    setIsRunning(false);
-    setPhase('Inhale');
-    setSeconds(4);
-    setCycleCount(0);
-    setElapsedSeconds(0);
-    onClose();
   };
 
   if (!isOpen) return null;

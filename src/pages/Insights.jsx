@@ -69,7 +69,10 @@ function useAnimatedNumber(target, duration = 600) {
 
   useEffect(() => {
     const num = typeof target === 'string' ? parseFloat(target) : target;
-    if (isNaN(num)) { setValue(0); return; }
+    if (isNaN(num)) {
+      const timer = setTimeout(() => setValue(0), 0);
+      return () => clearTimeout(timer);
+    }
 
     const start = performance.now();
     const animate = (now) => {
@@ -105,12 +108,21 @@ export default function Insights({ activeTab }) {
 
   useEffect(() => {
     if (activeTab !== 'insights') return;
-    const currentEntries = getEntries();
-    const tips = getTips();
-    setEntries(currentEntries);
-    setStats(getStatsFromEntries(currentEntries));
-    setWeeklyMap(getWeeklyMapFromEntries(currentEntries));
-    setRecentTips([...tips].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 5));
+    let active = true;
+    const timer = setTimeout(() => {
+      if (active) {
+        const currentEntries = getEntries();
+        const tips = getTips();
+        setEntries(currentEntries);
+        setStats(getStatsFromEntries(currentEntries));
+        setWeeklyMap(getWeeklyMapFromEntries(currentEntries));
+        setRecentTips([...tips].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 5));
+      }
+    }, 0);
+    return () => {
+      active = false;
+      clearTimeout(timer);
+    };
   }, [activeTab]);
 
   const toggleExpandTip = (id) => setExpandedTipId((prev) => (prev === id ? null : id));

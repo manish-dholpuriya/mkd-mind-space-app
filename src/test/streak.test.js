@@ -1,17 +1,4 @@
-import { describe, it, expect, beforeEach, vi } from 'vitest';
-import { saveEntry } from '../utils/storage';
-
-// Helper to create entries on specific dates
-function createEntryOnDate(dateStr, mood = '😄', stress = 5) {
-  const entries = JSON.parse(localStorage.getItem('mindspace_entries') || '[]');
-  entries.push({
-    id: Date.now().toString() + Math.random(),
-    mood,
-    stress,
-    createdAt: new Date(dateStr).toISOString(),
-  });
-  localStorage.setItem('mindspace_entries', JSON.stringify(entries));
-}
+import { describe, it, expect, beforeEach } from 'vitest';
 
 // We test the streak calculation logic from useStreak
 // Since it's the same logic, we import it from the hook

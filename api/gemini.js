@@ -1,8 +1,8 @@
+/* global process */
 // Vercel Serverless Function — proxies Gemini API calls
 // Keeps the API key server-side only (never sent to the browser)
 
 const API_ENDPOINT = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-flash-latest:generateContent';
-const MAX_BODY_SIZE = 10000; // 10KB max request body
 
 export default async function handler(req, res) {
   // CORS headers
@@ -30,7 +30,7 @@ export default async function handler(req, res) {
   if (typeof body === 'string') {
     try {
       body = JSON.parse(body);
-    } catch (e) {
+    } catch {
       return res.status(400).json({ error: 'Invalid JSON payload.' });
     }
   }

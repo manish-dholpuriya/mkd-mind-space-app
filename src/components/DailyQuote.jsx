@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { RefreshCw } from 'lucide-react';
 import { getDailyQuote } from '../utils/gemini';
 import { getEntries } from '../utils/storage';
@@ -15,7 +15,7 @@ export default function DailyQuote() {
     return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   };
 
-  const fetchQuote = async (force = false) => {
+  const fetchQuote = useCallback(async (force = false) => {
     const today = getLocalDateString();
     if (!force) {
       const cached = localStorage.getItem(QUOTE_CACHE_KEY);
@@ -52,11 +52,20 @@ export default function DailyQuote() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
 
   useEffect(() => {
-    fetchQuote();
-  }, []);
+    let active = true;
+    const timer = setTimeout(() => {
+      if (active) {
+        fetchQuote();
+      }
+    }, 0);
+    return () => {
+      active = false;
+      clearTimeout(timer);
+    };
+  }, [fetchQuote]);
 
   return (
     <div className="relative bg-gradient-to-br from-[#EEEDFE] to-[#E8F5F0] rounded-2xl p-5 overflow-hidden flex flex-col justify-center items-center text-center shadow-sm animate-fadeInUp">

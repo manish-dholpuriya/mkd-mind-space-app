@@ -88,7 +88,7 @@ async function callGemini(body) {
       lastError = error;
 
       if (error.name === 'AbortError') {
-        throw new Error('The request timed out. Please check your connection and try again.');
+        throw new Error('The request timed out. Please check your connection and try again.', { cause: error });
       }
 
       if (error instanceof TypeError && attempt < MAX_RETRIES) {

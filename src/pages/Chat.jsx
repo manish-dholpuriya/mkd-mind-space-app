@@ -16,7 +16,7 @@ function renderFormattedText(text) {
   const lines = text.split('\n');
   return lines.map((line, i) => {
     // Bullet points
-    const bulletMatch = line.match(/^[\-\*•]\s+(.*)/);
+    const bulletMatch = line.match(/^[-*•]\s+(.*)/);
     if (bulletMatch) {
       return (
         <div key={i} className="flex gap-2 items-start ml-1 my-0.5">

@@ -31,7 +31,7 @@ describe('gemini.js', () => {
 
   describe('analyzeEntry', () => {
     it('returns AI text on successful response', async () => {
-      global.fetch = mockFetchSuccess('You are doing great! Keep going.');
+      globalThis.fetch = mockFetchSuccess('You are doing great! Keep going.');
       
       const { analyzeEntry } = await import('../utils/gemini');
       const result = await analyzeEntry({
@@ -43,11 +43,11 @@ describe('gemini.js', () => {
       });
 
       expect(result).toBe('You are doing great! Keep going.');
-      expect(global.fetch).toHaveBeenCalledTimes(1);
+      expect(globalThis.fetch).toHaveBeenCalledTimes(1);
     });
 
     it('includes exam context in the API request', async () => {
-      global.fetch = mockFetchSuccess('Response text');
+      globalThis.fetch = mockFetchSuccess('Response text');
       
       const { analyzeEntry } = await import('../utils/gemini');
       await analyzeEntry({
@@ -58,7 +58,7 @@ describe('gemini.js', () => {
         journal: 'Feeling overwhelmed.',
       });
 
-      const callBody = JSON.parse(global.fetch.mock.calls[0][1].body);
+      const callBody = JSON.parse(globalThis.fetch.mock.calls[0][1].body);
       const promptText = callBody.contents[0].parts[0].text;
       expect(promptText).toContain('NEET, CUET');
     });
@@ -66,7 +66,7 @@ describe('gemini.js', () => {
 
   describe('chatWithAI', () => {
     it('returns AI response for chat messages', async () => {
-      global.fetch = mockFetchSuccess('I understand how you feel.');
+      globalThis.fetch = mockFetchSuccess('I understand how you feel.');
       
       const { chatWithAI } = await import('../utils/gemini');
       const result = await chatWithAI([
@@ -77,7 +77,7 @@ describe('gemini.js', () => {
     });
 
     it('maps ai role to model role', async () => {
-      global.fetch = mockFetchSuccess('Response');
+      globalThis.fetch = mockFetchSuccess('Response');
       
       const { chatWithAI } = await import('../utils/gemini');
       await chatWithAI([
@@ -86,14 +86,14 @@ describe('gemini.js', () => {
         { role: 'user', text: 'How are you?' },
       ]);
 
-      const callBody = JSON.parse(global.fetch.mock.calls[0][1].body);
+      const callBody = JSON.parse(globalThis.fetch.mock.calls[0][1].body);
       expect(callBody.contents[1].role).toBe('model');
     });
   });
 
   describe('getDailyQuote', () => {
     it('returns cleaned quote text', async () => {
-      global.fetch = mockFetchSuccess('"Your effort today shapes your tomorrow."');
+      globalThis.fetch = mockFetchSuccess('"Your effort today shapes your tomorrow."');
       
       const { getDailyQuote } = await import('../utils/gemini');
       const result = await getDailyQuote('JEE');
@@ -104,7 +104,7 @@ describe('gemini.js', () => {
 
   describe('error handling', () => {
     it('throws user-friendly error on non-ok response', async () => {
-      global.fetch = mockFetchFailure(400);
+      globalThis.fetch = mockFetchFailure(400);
       
       const { analyzeEntry } = await import('../utils/gemini');
       await expect(
@@ -113,7 +113,7 @@ describe('gemini.js', () => {
     });
 
     it('throws on empty response', async () => {
-      global.fetch = vi.fn().mockResolvedValue({
+      globalThis.fetch = vi.fn().mockResolvedValue({
         ok: true,
         json: () => Promise.resolve({ candidates: [{ content: { parts: [{ text: '' }] } }] }),
       });
