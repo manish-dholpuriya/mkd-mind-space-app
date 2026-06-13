@@ -77,7 +77,10 @@ export default function ExamCountdown() {
         </div>
       </div>
 
-      <div className="flex items-center gap-2 bg-brand-purple/5 border border-brand-purple/10 px-4 py-2.5 rounded-xl self-start sm:self-auto shrink-0 select-none">
+      <div 
+        className="flex items-center gap-2 bg-brand-purple/5 border border-brand-purple/10 px-4 py-2.5 rounded-xl self-start sm:self-auto shrink-0 select-none"
+        aria-label={`${daysRemaining} days remaining`}
+      >
         <Clock className="w-4 h-4 text-brand-purple" aria-hidden="true" />
         <span className="text-lg font-black text-brand-purple tracking-tight tabular-nums">
           {daysRemaining}

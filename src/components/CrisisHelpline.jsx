@@ -69,6 +69,7 @@ export default function CrisisHelpline() {
               <a
                 href={`tel:${h.contact.split(' ')[0].replace(/[^0-9]/g, '')}`}
                 className="flex items-center justify-center gap-1.5 px-3 py-1.5 bg-rose-600 hover:bg-rose-700 text-white rounded-lg text-xs font-bold transition-all shadow-sm shrink-0"
+                aria-label={`Call ${h.name} helpline`}
               >
                 <Phone className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>Call {h.contact.split(' ')[0]}</span>
