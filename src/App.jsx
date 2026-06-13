@@ -32,9 +32,7 @@ function App() {
   return (
     <div className="min-h-screen bg-gray-50 flex justify-center text-gray-900">
       <div className="w-full max-w-[680px] bg-white min-h-screen shadow-sm flex flex-col relative">
-        <a href="#main-content" className="skip-link">
-          Skip to main content
-        </a>
+
         
         {/* Glassmorphism Header */}
         <header className="px-6 py-5 flex items-center justify-between bg-white/80 backdrop-blur-xl sticky top-0 z-20 border-b border-gray-100/60">
