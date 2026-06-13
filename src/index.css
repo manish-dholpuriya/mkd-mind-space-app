@@ -227,22 +227,22 @@ button:focus-visible {
   outline-offset: 2px;
 }
 
-/* ───────── Skip to Content Link ───────── */
 .skip-link {
   position: absolute;
-  top: -40px;
+  top: 0;
   left: 0;
+  transform: translateY(-100%);
   background: #1D9E75;
   color: white;
   padding: 8px 16px;
   z-index: 100;
-  transition: top 0.2s;
+  transition: transform 0.2s;
   font-weight: bold;
   border-bottom-right-radius: 8px;
 }
 
 .skip-link:focus {
-  top: 0;
+  transform: translateY(0);
   outline: none;
 }
 
