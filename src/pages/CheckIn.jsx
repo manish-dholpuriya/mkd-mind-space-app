@@ -123,12 +123,12 @@ export default function CheckIn({ onEntryAdded }) {
                   onClick={() => setMood(m.label)}
                   className={`flex flex-col items-center justify-center p-1 sm:p-3 rounded-xl border text-center transition-all duration-200 cursor-pointer ${
                     isSelected
-                      ? 'border-[--color-brand-teal] bg-[--color-brand-teal]/5 shadow-sm scale-[1.01] font-bold'
+                      ? 'border-brand-teal bg-brand-teal/5 shadow-sm scale-[1.01] font-bold'
                       : 'border-gray-200 hover:border-gray-300 bg-white'
                   } ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                   <span className="text-xl sm:text-2xl mb-1">{m.emoji}</span>
-                  <span className={`text-[9px] sm:text-xs font-medium truncate w-full ${isSelected ? 'text-[--color-brand-teal]' : 'text-gray-600'}`}>
+                  <span className={`text-[9px] sm:text-xs font-medium truncate w-full ${isSelected ? 'text-brand-teal' : 'text-gray-600'}`}>
                     {m.label}
                   </span>
                 </button>
@@ -154,7 +154,7 @@ export default function CheckIn({ onEntryAdded }) {
               disabled={loading}
               value={stress}
               onChange={(e) => setStress(e.target.value)}
-              className={`w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[--color-brand-teal] ${
+              className={`w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-brand-teal ${
                 loading ? 'opacity-50 cursor-not-allowed' : ''
               }`}
             />
@@ -177,7 +177,7 @@ export default function CheckIn({ onEntryAdded }) {
                   onClick={() => toggleExam(exam)}
                   className={`px-4 py-2 rounded-full border text-xs font-semibold transition-all cursor-pointer ${
                     isSelected
-                      ? 'bg-[--color-brand-purple]/10 border-[--color-brand-purple] text-[--color-brand-purple]'
+                      ? 'bg-brand-purple/10 border-brand-purple text-brand-purple'
                       : 'bg-white border-gray-200 text-gray-600 hover:border-gray-300'
                   } ${loading ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
@@ -198,7 +198,7 @@ export default function CheckIn({ onEntryAdded }) {
             disabled={loading}
             onChange={(e) => setJournal(e.target.value)}
             placeholder="Write freely... What happened today? What's worrying you? Any wins, however small?"
-            className={`w-full p-4 border border-gray-200 rounded-xl focus:border-[--color-brand-teal] focus:ring-1 focus:ring-[--color-brand-teal] outline-none min-h-[120px] transition-all resize-y text-sm text-gray-800 placeholder-gray-400 bg-white ${
+            className={`w-full p-4 border border-gray-200 rounded-xl focus:border-brand-teal focus:ring-1 focus:ring-brand-teal outline-none min-h-[120px] transition-all resize-y text-sm text-gray-800 placeholder-gray-400 bg-white ${
               loading ? 'opacity-60 bg-gray-50 cursor-not-allowed' : ''
             }`}
           />
@@ -218,7 +218,7 @@ export default function CheckIn({ onEntryAdded }) {
           className={`w-full py-3.5 px-4 rounded-xl text-sm font-bold text-white transition-all shadow-sm cursor-pointer flex items-center justify-center gap-2 ${
             isSubmitDisabled || loading
               ? 'bg-gray-300 cursor-not-allowed shadow-none'
-              : 'bg-[--color-brand-teal] hover:bg-[--color-brand-teal]/90 active:scale-[0.99] hover:shadow-md'
+              : 'bg-brand-teal hover:bg-brand-teal/90 active:scale-[0.99] hover:shadow-md'
           }`}
         >
           {loading ? (
@@ -234,13 +234,13 @@ export default function CheckIn({ onEntryAdded }) {
 
       {/* AI Response Card */}
       {aiResponse && submittedDetails && (
-        <div className="p-6 rounded-2xl border border-gray-100 bg-gradient-to-br from-[--color-brand-teal]/5 to-[--color-brand-purple]/5 shadow-sm animate-in fade-in slide-in-from-bottom-2 duration-300 space-y-4">
+        <div className="p-6 rounded-2xl border border-gray-100 bg-gradient-to-br from-brand-teal/5 to-brand-purple/5 shadow-sm animate-in fade-in slide-in-from-bottom-2 duration-300 space-y-4">
           <div className="flex items-center gap-2">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            <span className="text-xs font-bold uppercase tracking-wider text-[--color-brand-teal]">
+            <span className="text-xs font-bold uppercase tracking-wider text-brand-teal">
               MindSpace AI
             </span>
           </div>
@@ -259,7 +259,7 @@ export default function CheckIn({ onEntryAdded }) {
           <button
             type="button"
             onClick={() => setIsBreathingOpen(true)}
-            className="w-full mt-2 py-2.5 px-4 rounded-xl border border-[--color-brand-teal]/30 hover:border-[--color-brand-teal] text-[--color-brand-teal] bg-[--color-brand-teal]/5 hover:bg-[--color-brand-teal]/10 text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5"
+            className="w-full mt-2 py-2.5 px-4 rounded-xl border border-brand-teal/30 hover:border-brand-teal text-brand-teal bg-brand-teal/5 hover:bg-brand-teal/10 text-xs font-bold transition-all cursor-pointer flex items-center justify-center gap-1.5"
           >
             🧘 Try a breathing exercise
           </button>

@@ -22,7 +22,7 @@ function App() {
         {/* Header */}
         <header className="px-6 py-5 border-b border-gray-100 flex items-center justify-between bg-white sticky top-0 z-10">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[--color-brand-teal] flex items-center justify-center shadow-sm">
+            <div className="w-10 h-10 rounded-full bg-brand-teal flex items-center justify-center shadow-sm">
               <Heart className="w-5 h-5 text-white fill-white" />
             </div>
             <div>
@@ -47,7 +47,7 @@ function App() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`pb-3 text-sm font-semibold transition-all whitespace-nowrap relative cursor-pointer ${
                   isActive 
-                    ? 'text-[--color-brand-teal]' 
+                    ? 'text-brand-teal' 
                     : 'text-gray-400 hover:text-gray-600'
                 }`}
               >
@@ -67,7 +67,7 @@ function App() {
                   </>
                 )}
                 {isActive && (
-                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[--color-brand-teal] rounded-t-full" />
+                  <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-brand-teal rounded-t-full" />
                 )}
               </button>
             );

@@ -171,7 +171,7 @@ export default function Insights({ activeTab }) {
               key={day.dateStr}
               className={`flex flex-col items-center justify-center py-3 rounded-xl border transition-all ${
                 day.hasEntry
-                  ? 'bg-[--color-brand-teal]/5 border-[--color-brand-teal]/20 text-[--color-brand-teal]'
+                  ? 'bg-brand-teal/5 border-brand-teal/20 text-brand-teal'
                   : 'bg-white border-gray-100 text-gray-300'
               }`}
             >
@@ -263,7 +263,7 @@ export default function Insights({ activeTab }) {
                   cx={p.x}
                   cy={p.y}
                   r="5"
-                  className="fill-white stroke-[--color-brand-teal] stroke-[3px] hover:r-6 hover:fill-[--color-brand-teal] transition-all cursor-pointer duration-150"
+                  className="fill-white stroke-brand-teal stroke-[3px] hover:r-6 hover:fill-brand-teal transition-all cursor-pointer duration-150"
                   onMouseEnter={() => setHoveredPoint(p)}
                   onMouseLeave={() => setHoveredPoint(null)}
                 />
@@ -291,8 +291,8 @@ export default function Insights({ activeTab }) {
         <h3 className="text-sm font-bold text-gray-700">Saved Insights</h3>
         {recentTips.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-12 px-4 border border-dashed border-gray-200 rounded-2xl text-center space-y-3 bg-white animate-in fade-in duration-200">
-            <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center text-[--color-brand-teal]">
-              <Leaf className="w-6 h-6 text-[--color-brand-teal]" />
+            <div className="w-12 h-12 rounded-full bg-emerald-50 flex items-center justify-center text-brand-teal">
+              <Leaf className="w-6 h-6 text-brand-teal" />
             </div>
             <p className="text-sm text-gray-500 font-semibold max-w-[280px]">
               Complete your first check-in to unlock personalized insights.
@@ -309,11 +309,11 @@ export default function Insights({ activeTab }) {
               return (
                 <div
                   key={tip.id}
-                  className="bg-white border border-gray-100 rounded-xl p-4 border-l-[3px] border-l-[--color-brand-teal] shadow-sm flex flex-col space-y-2 text-left"
+                  className="bg-white border border-gray-100 rounded-xl p-4 border-l-[3px] border-l-brand-teal shadow-sm flex flex-col space-y-2 text-left"
                 >
                   <div className="flex justify-between items-center text-[10px] font-semibold text-gray-400">
                     <span>{formatTipDate(tip.createdAt)}</span>
-                    <span className="uppercase text-[--color-brand-teal] tracking-wider font-bold">
+                    <span className="uppercase text-brand-teal tracking-wider font-bold">
                       Insight
                     </span>
                   </div>
@@ -325,7 +325,7 @@ export default function Insights({ activeTab }) {
                   {tip.aiResponse && tip.aiResponse.length > 200 && (
                     <button
                       onClick={() => toggleExpandTip(tip.id)}
-                      className="text-xs font-bold text-[--color-brand-teal] self-start flex items-center gap-1 hover:underline cursor-pointer pt-1"
+                      className="text-xs font-bold text-brand-teal self-start flex items-center gap-1 hover:underline cursor-pointer pt-1"
                     >
                       {isExpanded ? (
                         <>

@@ -98,9 +98,9 @@ export default function BreathingTimer({ isOpen, onClose }) {
 
   const getPhaseColorClass = () => {
     if (!isRunning) return 'text-gray-400';
-    if (phase === 'Inhale') return 'text-[--color-brand-teal]';
+    if (phase === 'Inhale') return 'text-brand-teal';
     if (phase === 'Hold') return 'text-amber-500';
-    return 'text-[--color-brand-purple]';
+    return 'text-brand-purple';
   };
 
   const getInstructions = () => {
@@ -137,10 +137,10 @@ export default function BreathingTimer({ isOpen, onClose }) {
               !isRunning 
                 ? 'bg-gray-50 border border-gray-100' 
                 : phase === 'Inhale'
-                ? 'bg-[--color-brand-teal]/10 border border-[--color-brand-teal]/20 shadow-lg shadow-[--color-brand-teal]/5'
+                ? 'bg-brand-teal/10 border border-brand-teal/20 shadow-lg shadow-brand-teal/5'
                 : phase === 'Hold'
                 ? 'bg-amber-50 border border-amber-200/55 shadow-lg shadow-amber-500/5'
-                : 'bg-[--color-brand-purple]/10 border border-[--color-brand-purple]/20 shadow-lg shadow-[--color-brand-purple]/5'
+                : 'bg-brand-purple/10 border border-brand-purple/20 shadow-lg shadow-brand-purple/5'
             }`}
           />
 
@@ -168,7 +168,7 @@ export default function BreathingTimer({ isOpen, onClose }) {
           className={`px-8 py-3.5 rounded-full text-sm font-bold text-white transition-all shadow-md flex items-center gap-2 cursor-pointer ${
             isRunning 
               ? 'bg-rose-500 hover:bg-rose-600 hover:shadow-lg active:scale-98' 
-              : 'bg-[--color-brand-teal] hover:bg-[--color-brand-teal]/90 hover:shadow-lg active:scale-98'
+              : 'bg-brand-teal hover:bg-brand-teal/90 hover:shadow-lg active:scale-98'
           }`}
         >
           {isRunning ? (

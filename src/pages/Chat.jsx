@@ -50,8 +50,8 @@ export default function Chat() {
   return (
     <div className="flex flex-col h-full space-y-4 animate-in fade-in duration-300">
       {/* Sparkles Tip banner */}
-      <div className="bg-[--color-brand-teal]/5 border border-[--color-brand-teal]/10 rounded-2xl p-4 flex gap-3 items-start">
-        <Sparkles className="w-5 h-5 text-[--color-brand-teal] shrink-0 mt-0.5" />
+      <div className="bg-brand-teal/5 border border-brand-teal/10 rounded-2xl p-4 flex gap-3 items-start">
+        <Sparkles className="w-5 h-5 text-brand-teal shrink-0 mt-0.5" />
         <div className="text-xs font-semibold text-gray-600 leading-normal">
           Chat freely with MindSpace. Talk about prep stress, revision tips, burnout, or simply share how your day went.
         </div>
@@ -70,7 +70,7 @@ export default function Chat() {
             key={idx}
             className={`px-4 py-2.5 max-w-[90%] sm:max-w-[85%] text-sm font-medium rounded-2xl leading-relaxed shadow-sm animate-in fade-in slide-in-from-bottom-1 duration-200 ${
               m.role === 'user'
-                ? 'bg-[--color-brand-teal] text-white self-end rounded-tr-sm'
+                ? 'bg-brand-teal text-white self-end rounded-tr-sm'
                 : 'bg-white border border-gray-100 text-gray-700 self-start rounded-tl-sm'
             }`}
           >
@@ -98,7 +98,7 @@ export default function Chat() {
           onChange={(e) => setInput(e.target.value)}
           disabled={loading}
           placeholder="Type your message here..."
-          className="flex-1 px-4 py-3 border border-gray-200 rounded-xl focus:border-[--color-brand-teal] focus:ring-1 focus:ring-[--color-brand-teal] outline-none text-sm bg-white font-medium placeholder-gray-400 transition-all disabled:opacity-50 disabled:bg-gray-50"
+          className="flex-1 px-4 py-3 border border-gray-200 rounded-xl focus:border-brand-teal focus:ring-1 focus:ring-brand-teal outline-none text-sm bg-white font-medium placeholder-gray-400 transition-all disabled:opacity-50 disabled:bg-gray-50"
         />
         <button
           type="submit"
@@ -106,7 +106,7 @@ export default function Chat() {
           className={`px-4 rounded-xl text-white font-bold transition-all flex items-center justify-center cursor-pointer shadow-sm ${
             loading || !input.trim()
               ? 'bg-gray-300 cursor-not-allowed'
-              : 'bg-[--color-brand-teal] hover:bg-[--color-brand-teal]/90 active:scale-[0.98] hover:shadow-md'
+              : 'bg-brand-teal hover:bg-brand-teal/90 active:scale-[0.98] hover:shadow-md'
           }`}
         >
           <Send className="w-4 h-4" />

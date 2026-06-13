@@ -60,12 +60,12 @@ export default function DailyQuote() {
   return (
     <div className="relative bg-[#EEEDFE] rounded-2xl p-5 overflow-hidden flex flex-col justify-center items-center text-center shadow-sm animate-in fade-in duration-300">
       {/* Decorative Quote Mark */}
-      <span className="absolute -top-1 left-4 text-[72px] font-serif text-[--color-brand-teal] opacity-10 select-none leading-none">
+      <span className="absolute -top-1 left-4 text-[72px] font-serif text-brand-teal opacity-10 select-none leading-none">
         “
       </span>
 
       {/* Tag Header */}
-      <div className="text-[10px] font-bold uppercase tracking-wider text-[--color-brand-purple] mb-1.5 z-1 select-none">
+      <div className="text-[10px] font-bold uppercase tracking-wider text-brand-purple mb-1.5 z-1 select-none">
         Today's thought
       </div>
 
@@ -78,7 +78,7 @@ export default function DailyQuote() {
       <button
         onClick={() => fetchQuote(true)}
         disabled={loading}
-        className="absolute top-3.5 right-3.5 p-1.5 rounded-lg hover:bg-[--color-brand-purple]/10 text-gray-400 hover:text-[--color-brand-purple] transition-all cursor-pointer z-1 disabled:opacity-50"
+        className="absolute top-3.5 right-3.5 p-1.5 rounded-lg hover:bg-brand-purple/10 text-gray-400 hover:text-brand-purple transition-all cursor-pointer z-1 disabled:opacity-50"
         title="Get new quote"
       >
         <RefreshCw className={`w-3.5 h-3.5 ${loading ? 'animate-spin' : ''}`} />
